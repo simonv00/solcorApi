@@ -7,10 +7,10 @@ const fs = require('fs');
 
 var config =
 {
-    host: 'solcorapi.mysql.database.azure.com',
-    user: 'solcorapi',
-    password: 'Proyecto3',
-    database: 'proyecto3',
+    host: 'us-cdbr-east-06.cleardb.net',
+    user: 'b5ab2966588d51',
+    password: '29f8dd57',
+    database: 'heroku_dc84d822bdd3b25',
     port: 3306,
 };
 
