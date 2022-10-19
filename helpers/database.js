@@ -5,22 +5,22 @@
 const mysql = require('mysql');
 const fs = require('fs');
 
-/*var config =
+var config =
 {
-    host: 'proyecto3.mysql.database.azure.com',
-    user: 'proyecto3',
-    password: 'Solcor123',
+    host: 'solcorapi.mysql.database.azure.com',
+    user: 'solcorapi',
+    password: 'Proyecto3',
     database: 'proyecto3',
     port: 3306,
-    ssl: {ca: fs.readFileSync("C:\\Users\\simon\\Downloads\\DigiCertGlobalRootCA.crt.pem")}
-};*/
+};
 
+/*
 var config ={
   host: "localhost",
   user: "root",
   password: "pinguino",
   database: 'proyecto3',
-};
+};*/
 
 const dbConection = new mysql.createConnection(config);
 
