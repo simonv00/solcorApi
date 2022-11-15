@@ -14,14 +14,6 @@ var config =
     port: 3306,
 };
 
-/*
-var config ={
-  host: "localhost",
-  user: "root",
-  password: "pinguino",
-  database: 'proyecto3',
-};*/
-
 const dbConection = new mysql.createConnection(config);
 
 dbConection.connect(

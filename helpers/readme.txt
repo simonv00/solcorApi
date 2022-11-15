@@ -1,4 +1,4 @@
-paginafinal.com/api/consultar 
+[paginafinal.com]/api/consultar 
 
 Se conecta por el metodo de post y envia la siguiente informacion:
 

@@ -26,6 +26,3 @@ SHOW TABLES;
 SELECT * FROM Consultas;
 
 /*drop table Consultas; 
-
-ALTER USER `root`@`localhost` IDENTIFIED WITH mysql_native_password BY `pinguino`;
-flush privileges;*/

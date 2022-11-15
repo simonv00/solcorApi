@@ -12,12 +12,15 @@ const arrayEsm = [
 ];
 //*****************************************************************************************
 
+// Recepcion de POST para calculo de los datos solicitados
 Controller.calculate = async (req, res) => {
   const { tipoSector, direccion, area, tipoTecho, tipoMaterial, arrayConsumoMensual, poligonos, diasActividad, perfilUso } = req.body;
   
+  //Verificacion de los datos de entrada
   const {isTipoSector,isDireccion,isArea,isTipoTecho,isTipoMaterial,isarrayConsumoMensual,isDiasActividad,isPerfilUso,allGood} = validacion.validateAll(req.body);
   console.log(allGood);
 
+  //Se envian las coordenadas principales a la API de solargis y se extrae los datos necesarios
   var arrayEsmString = await solargisAPI(
     poligonos[0].puntos[0].lat,
     poligonos[0].puntos[0].lon
@@ -27,6 +30,7 @@ Controller.calculate = async (req, res) => {
   arrayEsmString.forEach(element => arrayEsm.push(parseFloat(element)))
   console.log(arrayEsm)
   
+  // Calcul de los valores pedidos
   const calculate = potenciaOptima(
     area, 
     arrayConsumoMensual, 
@@ -37,6 +41,7 @@ Controller.calculate = async (req, res) => {
 
   const sqlInsert = "INSERT INTO Consultas (tipoSector, direccion, area, tipoTecho, tipoMaterial, arrayConsumoMensual, latitud, longitud, diasActividad, perfilUso, arrayEsm, potenciaOptima, precioPanel, netoAnualMax) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
   
+  // Respuesta de la API
   if(!allGood){
     res.status(400).json({
       message: "Error en crear la consulta en la base de datos por un dato erroneo", esTipoSector: isTipoSector, esDireccion: isDireccion, esArea: isArea, esTipoTecho: isTipoTecho,esTipoMaterial: isTipoMaterial, esArrayConsumoMensual: isarrayConsumoMensual,esDiasdActividad: isDiasActividad,esPerfilUso: isPerfilUso,esTodoBien: allGood
@@ -59,6 +64,7 @@ Controller.calculate = async (req, res) => {
   }
 };
 
+//Recepcion del GET para enviar toda la informacoin de todas las consultas
 Controller.getAll = async (req, res) => {
   
   const sqlExists = "SELECT * from Consultas";

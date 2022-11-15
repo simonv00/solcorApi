@@ -1,6 +1,6 @@
 const axios = require('axios');
 const parseString = require('xml2js').parseString;
-
+//Conexion con la API de solargis
 exports.solargisAPI = async (latitud, longitud) => {
 
     try {

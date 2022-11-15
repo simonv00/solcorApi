@@ -21,6 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Enrutador para los diferentes metodos de la API
 app.use('/api/consultar', consultarRouter);
 app.use('/', indexRouter);
 // catch 404 and forward to error handler

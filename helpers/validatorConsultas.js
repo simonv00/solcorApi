@@ -1,5 +1,5 @@
 const v = require('validator')
-
+//Validacion de los datos de entrada, se verifica el tipo de dato, longitud, etx
 module.exports = class validatorConsultas{
 
     static validateAll(consulta){
